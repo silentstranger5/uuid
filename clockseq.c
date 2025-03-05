@@ -16,7 +16,7 @@ uint16_t clockseq(void) {
 void clockseq_write(const char *filename, uint16_t cseq) {
     FILE *f = fopen(filename, "w");
     char s[8] = {0};
-    itoa(cseq, s, 10);
+    sprintf(s, "%d", cseq);
     int size = fwrite(s, sizeof(char), strlen(s), f);
     if (!size) {
         perror("failed to write file");

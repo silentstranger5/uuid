@@ -143,7 +143,7 @@ void sha_init(sha_ctx *ctx) {
     }
 }
 
-uint32_t f(x, y, z, t) {
+uint32_t f(int x, int y, int z, int t) {
     switch (t / 20) {
         case 0:
             return CH(x, y, z);
@@ -159,7 +159,7 @@ uint32_t f(x, y, z, t) {
 }
 
 // update context
-void sha_update(sha_ctx *ctx, uint8_t *msg) {
+void sha_update(sha_ctx *ctx, const uint8_t *msg) {
     uint32_t W[80] = {0};
     uint32_t a, b, c, d, e, T;
     ctx->msg = msg;

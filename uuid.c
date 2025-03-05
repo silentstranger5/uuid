@@ -21,13 +21,13 @@ uint64_t *uuidv1(void) {
     b = (uint8_t *) &cseq;
     b[1] &= 0x40 - 1;
     b[1] |= 0x2 << 6;
-    uuid[1] &= (uint64_t) (1 << 49) - 1;
+    uuid[1] &= ((uint64_t) 1 << 49) - 1;
     uuid[1] |= (uint64_t) cseq << 48;
     return uuid;
 }
 
 uint64_t *uuidv4(void) {
-    srand(time(NULL));
+    srand((unsigned int) time(NULL));
     splitmix64_seed(rand());
     uint64_t seed[2];
     for (int i = 0; i < 2; i++) {
